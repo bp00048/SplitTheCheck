@@ -4,6 +4,5 @@ class Restaurant < ApplicationRecord
     with:     %r{\.(com|net|couk|edu)\z}i,
     message: 'Must be a valid website.'
   }
-  validates :yes_split, :no_split, allow_blank: true
 
 end
