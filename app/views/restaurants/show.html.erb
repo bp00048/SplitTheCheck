@@ -1,4 +1,4 @@
-
+<div class="container">
 
 <div class="name">  <%= @restaurant.name %></div>
 
@@ -20,7 +20,22 @@
   <%= @restaurant.no_split %>
 </p>
 
-Did <%= @restaurant.name %> split the check?
-<%= link_to 'Yes', root_path, class: "btn", id:"yes" %>
-<%= link_to 'No', root_path, class: "btn", id:"yes" %>|
+  Did <%= @restaurant.name %> split the check?
+<div class="row justify-content-center">
+<div class="col-6 align-self-center">
+
+  <br>
+  <%= link_to 'Yes', restaurant_path,  class: "btn btn-primary" %>
+    <%= link_to 'No', restaurant_path,  class: "btn btn-danger" %>
+
+
+
+
+</div>
+</div>
+
+
+
+
 <%= link_to 'Back', restaurants_path %>
+</div>
