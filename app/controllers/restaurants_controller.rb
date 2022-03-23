@@ -15,6 +15,13 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new
   end
 
+def yesVote
+  @restaurant.yes_split = @restaurant.yes_split + 1;
+end
+
+def noVote
+  @restaurant.no_split = @restaurant.no_split + 1;
+end 
   # GET /restaurants/1/edit
   def edit
   end

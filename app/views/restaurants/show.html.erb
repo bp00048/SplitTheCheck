@@ -1,29 +1,26 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @restaurant.name %>
-</p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @restaurant.location %>
-</p>
+<div class="name">  <%= @restaurant.name %></div>
 
-<p>
-  <strong>Website:</strong>
+  <div class="location">  <%= @restaurant.location %></div>
+
+<div class="website">
   <%= @restaurant.website %>
-</p>
-
+  </div>
+<div class="totalVotes">
+  <%= (@restaurant.yes_split/(@restaurant.yes_split.to_f + @restaurant.no_split) * 100).to_i %> % Yes
+</div>
 <p>
-  <strong>Yes split:</strong>
+  <strong>Yes Votes:</strong>
   <%= @restaurant.yes_split %>
 </p>
 
 <p>
-  <strong>No split:</strong>
+  <strong>No Votes:</strong>
   <%= @restaurant.no_split %>
 </p>
 
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+Did <%= @restaurant.name %> split the check?
+<%= link_to 'Yes', root_path, class: "btn", id:"yes" %>
+<%= link_to 'No', root_path, class: "btn", id:"yes" %>|
 <%= link_to 'Back', restaurants_path %>
