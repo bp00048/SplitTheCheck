@@ -3,12 +3,11 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants or /restaurants.json
   def index
-    @restaurants = Restaurant.where("name LIKE ?", "%" + params[:q] +"%")
+    if !params[:q].nil?
+      @restaurants = Restaurant.where("name LIKE ?", "%" + params[:q] +"%")
   end
+end
 
-  def searchName
-    @restaurants = Restaurant.where("name LIKE ?", "%" + params[:q] +"%")
-  end
   # GET /restaurants/1 or /restaurants/1.json
   def show
   end

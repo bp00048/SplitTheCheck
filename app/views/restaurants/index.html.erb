@@ -6,7 +6,7 @@
     <div>
     Name:
     <form class="form" action="/searchName">
-    <input class="form-control mr-sm-2" name="q" type="text" placeholder="Search Name" aria-label="Search">
+    <input class="form-control" name="q" type="text" placeholder="Search Name" aria-label="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
     </div>
@@ -14,5 +14,12 @@
 </table>
 
 <br>
+<% if @restaurants.present? %>
 <%= render "searchResults" %>
+<% end %>
+
+
+<p></p>
+
+
 <%= link_to 'New Restaurant', new_restaurant_path %>
