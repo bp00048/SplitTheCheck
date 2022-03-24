@@ -1,35 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Restaurants</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Location</th>
-      <th>Website</th>
-      <th>Yes split</th>
-      <th>No split</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
   <tbody>
-    <% @restaurants.each do |restaurant| %>
-      <tr>
-        <td><%= restaurant.name %></td>
-        <td><%= restaurant.location %></td>
-        <td><%= restaurant.website %></td>
-        <td><%= restaurant.yes_split %></td>
-        <td><%= restaurant.no_split %></td>
-        <td><%= link_to 'Show', restaurant %></td>
-        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
-        <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    <div>
+    Name:
+    <form class="form" action="/searchName">
+    <input class="form-control mr-sm-2" name="q" type="text" placeholder="Search Name" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    </div>
   </tbody>
 </table>
 
 <br>
-
+<%= render "searchResults" %>
 <%= link_to 'New Restaurant', new_restaurant_path %>

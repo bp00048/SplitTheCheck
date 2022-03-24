@@ -3,9 +3,12 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants or /restaurants.json
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.where("name LIKE ?", "%" + params[:q] +"%")
   end
 
+  def searchName
+    @restaurants = Restaurant.where("name LIKE ?", "%" + params[:q] +"%")
+  end
   # GET /restaurants/1 or /restaurants/1.json
   def show
   end
@@ -21,7 +24,7 @@ end
 
 def noVote
   @restaurant.no_split = @restaurant.no_split + 1;
-end 
+end
   # GET /restaurants/1/edit
   def edit
   end
