@@ -2,16 +2,20 @@
 
 
 
-  <tbody>
     <div>
     Name:
     <form class="form" action="/searchName">
-    <input class="form-control" name="q" type="text" placeholder="Search Name" aria-label="Search">
+    <input class="form-control" name="n" type="text" placeholder="Search Name" aria-label="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
     </div>
-  </tbody>
-</table>
+    <div>
+    State:
+    <form class="form" action="/searchState">
+    <input class="form-control" name="s" type="text" placeholder="Search State" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    </div>
 
 <br>
 <% if @restaurants.present? %>
