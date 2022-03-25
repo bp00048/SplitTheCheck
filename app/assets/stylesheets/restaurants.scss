@@ -11,3 +11,28 @@ a.btn{
 a.btn:visited{
   color: #FFFFFF;
 }
+
+h1{
+  text-align: center;
+  padding: .5em;
+}
+
+.header{
+  padding: 2em;
+}
+.showPercent{
+  font-family: "Georgia", Times, serif;
+  text-align: center;
+  font-weight: bold;
+  background-color: #28699A;
+  border-radius: 5px;
+  color: #FFFFFF;
+  padding: 1em;
+  display: block;
+}
+
+.showName{
+  font-family: "Georgia", Times, serif;
+  text-align: center;
+  font-weight: bold;
+}
