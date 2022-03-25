@@ -14,6 +14,7 @@ end
 
   # GET /restaurants/1 or /restaurants/1.json
   def show
+    @restaurant = Restaurant.all.find(params[:id])
   end
 
   # GET /restaurants/new
@@ -21,8 +22,11 @@ end
     @restaurant = Restaurant.new
   end
 
-def yesVote
-  @restaurant.yes_split = @restaurant.yes_split + 1;
+def yes
+ @restaurant = Restaurant.all.find(params[:id])
+ @restaurant.yes_split += 1;
+ @restaurant.save
+ redirect_to restaurant_path(@restaurant)
 end
 
 def noVote
