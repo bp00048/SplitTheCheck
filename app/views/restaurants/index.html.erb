@@ -1,29 +1,36 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
+  <%= render "header" %>
+  <div class="row">
 
+    <div class="col">
 
-
-    <div>
     Name:
     <form class="form" action="/searchName">
-    <input class="form-control" name="n" type="text" placeholder="Search Name" aria-label="Search">
+    <input class="form-control-inline" name="n"  type="text" placeholder="Search Name" aria-label="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-    </div>
-    <div>
-    State:
-    <form class="form" action="/searchState">
-    <input class="form-control" name="s" type="text" placeholder="Search State" aria-label="Search">
-    <button class="btn btn-outline-success" type="submit">Search</button>
+
     </form>
     </div>
 
+    <div class="col">
+
+    State:
+    <form class="form" action="/searchState">
+    <input class="form-control-inline" name="s" type="text" placeholder="Search State" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    </div>
+</div>
+<div class="row">
+  <%= link_to 'Add Restaurant', new_restaurant_path %>
 <br>
 <% if @restaurants.present? %>
 <%= render "searchResults" %>
 <% end %>
 
 
+
 <p></p>
-
-
-<%= link_to 'New Restaurant', new_restaurant_path %>
+</div>
+</div>
