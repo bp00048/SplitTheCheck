@@ -8,22 +8,61 @@ a.btn{
 
 }
 
+.container{
+padding: .5em;
+}
+
 a.btn:visited{
   color: #FFFFFF;
 }
 
+.showLocation{
+  text-align: center;
+  font-style: italic;
+  font-size: 12px;
+}
+
+.showWebsite{
+  text-align: center;
+  text-decoration-line: underline;
+    font-size: 12px;
+}
 h1{
   text-align: center;
-  padding: .5em;
+}
+
+.showRestaurantInfo{
+  padding: 3em;
+}
+
+.showVoteButtons{
+  text-align: center;
+  border: 2px solid #000000;
+  border-radius: 25px;
+  padding: 1em;
 }
 
 .header{
-  padding: 2em;
+  font-family: "Georgia", Times, serif;
+  text-align: center;
+  padding: .5em;
+  background-color: #3D5B4F;
+  border-radius: 5px;
+  color: #FFFFFF;
+
+}
+
+.showVoteAmount{
+  text-align: center;
+  font-size: 9px;
+  padding-bottom: 2em;
+  padding-top: 2px;
 }
 .showPercent{
   font-family: "Georgia", Times, serif;
   text-align: center;
   font-weight: bold;
+  font-size: 1.7em;
   background-color: #28699A;
   border-radius: 5px;
   color: #FFFFFF;

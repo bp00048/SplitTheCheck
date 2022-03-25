@@ -1,6 +1,7 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: %i[ show edit update destroy ]
 
+
   # GET /restaurants or /restaurants.json
   def index
     if !params[:n].nil? && !params[:n].empty?
@@ -15,6 +16,7 @@ end
   # GET /restaurants/1 or /restaurants/1.json
   def show
     @restaurant = Restaurant.all.find(params[:id])
+
   end
 
   # GET /restaurants/new
@@ -26,12 +28,18 @@ def yes
  @restaurant = Restaurant.all.find(params[:id])
  @restaurant.yes_split += 1;
  @restaurant.save
+
  redirect_to restaurant_path(@restaurant)
 end
 
-def noVote
-  @restaurant.no_split = @restaurant.no_split + 1;
+def no
+ @restaurant = Restaurant.all.find(params[:id])
+ @restaurant.no_split += 1;
+ @restaurant.save
+  session[:vote] = 0;
+ redirect_to restaurant_path(@restaurant)
 end
+
   # GET /restaurants/1/edit
   def edit
   end
@@ -84,4 +92,5 @@ end
     def restaurant_params
       params.require(:restaurant).permit(:name, :location, :website, :yes_split, :no_split)
     end
+
 end

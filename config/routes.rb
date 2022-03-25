@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root 'restaurants#index'
 
   put '/restaurants/:id/yes', to: 'restaurants#yes', as: 'yes'
+  put '/restaurants/:id/no', to: 'restaurants#no', as: 'no'
 
   get 'searchName', to: "restaurants#index"
   get 'searchState', to: "restaurants#index"

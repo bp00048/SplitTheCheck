@@ -1,7 +1,7 @@
 <div class="container">
 
     <%= render "header" %>
-
+<div class="showRestaurantInfo">
     <div class="col align-self-center">
     <div class="row justify-content-center">
 <div class="showName">
@@ -10,17 +10,23 @@
 </div>
 </div>
 <div class="row justify-content-center">
+  <div class="showLocation">
   <%= @restaurant.location %>
   </div>
+  </div>
 
   <div class="row justify-content-center">
+    <div class="showWebsite">
 <% if @restaurant.website? then %>
-  <%= @restaurant.website %>
+  <%= link_to @restaurant.website, @restaurant.website, :target=> '_blank' %>
   <% end %>
+  </div>
+  </div>
   </div>
   <div class="row justify-content-center">
 
-      <div class="col-4">
+
+      <div class="col-6">
   <div class="showPercent">
   <%= (@restaurant.yes_split/(@restaurant.yes_split.to_f + @restaurant.no_split) * 100).to_i %> % Yes
 </div>
@@ -28,22 +34,29 @@
 </div>
 
   <div class="row justify-content-center">
+<div class="showVoteAmount">
+Yes Votes: <%= @restaurant.yes_split %>
 
-Yes Votes:<%= @restaurant.yes_split %>
-
-No Votes:<%= @restaurant.no_split %>
-
+No Votes: <%= @restaurant.no_split %>
+</div>
 </div>
 
 <div class="row justify-content-center">
-
-  Did <%= @restaurant.name %> split the check?
+  <div class="col-5">
+<div class="showVoteButtons">
+  Did <%= @restaurant.name %> split the check for you?
 <div class="row justify-content-center">
-<div class="col-6 align-self-center">
-
+<div class="col align-self-center">
+<% if session[:vote] = 0 then %>
   <br>
   <%= link_to 'Yes', yes_path(@restaurant), class: "btn btn-primary", method: :put %>
-    <%= link_to 'No', restaurant_path, class: "btn btn-danger" %>
+    <%= link_to 'No', no_path(@restaurant), class: "btn btn-danger", method: :put %>
+<% else %>
+Thank you for your vote!
+<% end %>
+
+    </div>
+    </div>
     </div>
 
 
