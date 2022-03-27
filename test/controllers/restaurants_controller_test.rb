@@ -40,9 +40,18 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy restaurant" do
     assert_difference('Restaurant.count', -1) do
-      delete restaurant_url(@restaurant)
+    delete restaurant_url(@restaurant)
     end
 
     assert_redirected_to restaurants_url
   end
-end
+
+  test "should add one yes vote" do
+
+    assert_difference(@restaurant.yes_split.to_s) do
+    put yes_path(@restaurant)
+
+
+    end
+    end
+    end

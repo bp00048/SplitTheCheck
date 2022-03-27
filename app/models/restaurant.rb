@@ -1,4 +1,5 @@
 class Restaurant < ApplicationRecord
+  after_create :set_defaults, unless: :persisted?
   validates :name, presence: true
   validates :website, allow_blank: true, format: {
     with:     %r{\.(com|net|couk|edu)\z}i,
@@ -9,7 +10,6 @@ class Restaurant < ApplicationRecord
     with: /\A[a-zA-Z\s]+,\s[a-zA-Z]{2}\z/,
     message: "Location must be City, ST"
   }
-  after_initialize :set_defaults, unless: :persisted?
 
   validates :yes_split, :no_split, numericality: {
     greater_than_or_equal_to: 0
@@ -20,4 +20,13 @@ class Restaurant < ApplicationRecord
     self.no_split ||= 0
   end
 
+  def yes
+    self.yes_split += 1
+    self.save
+  end
+
+  def no
+    self.no_split += 1
+    self.save
+  end
 end

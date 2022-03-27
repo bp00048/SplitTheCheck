@@ -59,13 +59,10 @@ No Votes: <%= @restaurant.no_split %>
   Did <%= @restaurant.name %> split the check for you?
 <div class="row justify-content-center">
 <div class="col align-self-center">
-<% if session[:vote] = 0 then %>
   <br>
   <%= link_to 'Yes', yes_path(@restaurant), class: "btn btn-primary", method: :put %>
     <%= link_to 'No', no_path(@restaurant), class: "btn btn-danger", method: :put %>
-<% else %>
-Thank you for your vote!
-<% end %>
+
 
     </div>
     </div>
