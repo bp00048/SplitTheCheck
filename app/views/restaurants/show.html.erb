@@ -31,7 +31,16 @@
 
       <div class="col-6">
   <div class="showPercent">
+    <% if (@restaurant.yes_split == 0 && @restaurant.no_split == 0) %>
+      Not Enough Votes!
+      <% elsif (@restaurant.yes_split > 0 && @restaurant.no_split == 0) %>
+      100% Yes
+      <% elsif (@restaurant.yes_split == 0 && @restaurant_no_split > 0) %>
+      0% Yes
+      <% else %>
   <%= (@restaurant.yes_split/(@restaurant.yes_split.to_f + @restaurant.no_split) * 100).to_i %> % Yes
+<% end %>
+
 </div>
 </div>
 </div>
