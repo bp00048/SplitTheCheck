@@ -1,3 +1,4 @@
+<div class="form">
 <%= form_with(model: restaurant) do |form| %>
   <% if restaurant.errors.any? %>
     <div id="error_explanation">
@@ -12,31 +13,23 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
+    Restaurant Name:<br>
     <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :location %>
+    Restaurant Location:<br>
     <%= form.text_field :location %>
   </div>
 
-  <div class="field">
-    <%= form.label :website %>
+  <div class="field"><br>
+    Restaurant Website (Optional):<br>
     <%= form.text_field :website %>
   </div>
 
-  <div class="field">
-    <%= form.label :yes_split %>
-    <%= form.number_field :yes_split %>
-  </div>
-
-  <div class="field">
-    <%= form.label :no_split %>
-    <%= form.number_field :no_split %>
-  </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+</div>

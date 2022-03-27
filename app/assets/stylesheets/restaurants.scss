@@ -9,6 +9,22 @@ a.btn{
 }
 
 .container{
+  padding: 3em;
+}
+
+tr.list_line_odd {
+  background-color: #EFFFEF;
+}
+
+tr.list_line_even {
+  background-color: #8FBC8F;
+}
+
+
+.searchBoxes{
+  text-align: center;
+}
+.container{
 padding: .5em;
 }
 
@@ -16,10 +32,33 @@ a.btn:visited{
   color: #FFFFFF;
 }
 
+a.btn:link{
+  color: #FFFFFF;
+}
+
+a.btn:hover{
+  color: #FFFFFF;
+}
+
+a:link{
+  font-weight: bold;
+  color: #000000;
+}
+
+a:visited{
+  font-style: italic;
+  color: #000000;
+}
+
 .showLocation{
   text-align: center;
   font-style: italic;
   font-size: 12px;
+}
+
+.form{
+  padding-left: 15em;
+  padding-right: 15em;
 }
 
 .showWebsite{
@@ -29,10 +68,12 @@ a.btn:visited{
 }
 h1{
   text-align: center;
+  padding: 1em;
+    font-family: "Georgia", Times, serif;
 }
 
 .showRestaurantInfo{
-  padding: 3em;
+  padding: 2em;
 }
 
 .showVoteButtons{

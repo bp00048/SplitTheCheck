@@ -1,8 +1,9 @@
 
 <div class="container">
   <%= render "header" %>
-  <div class="row">
-
+  <div class="row justify-content-center">
+    <h1>Search</h1>
+    <div class="searchBoxes">
     <div class="col">
 
     Name:
@@ -12,7 +13,8 @@
 
     </form>
     </div>
-
+    <br>
+    <div class="row">
     <div class="col">
 
     State:
@@ -21,15 +23,17 @@
     <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
     </div>
+    </div>
+  <%= link_to 'Add Restaurant', new_restaurant_path %>
+    </div>
+
+  <br>
 </div>
 <div class="row">
-  <%= link_to 'Add Restaurant', new_restaurant_path %>
-<br>
+
 <% if @restaurants.present? %>
 <%= render "searchResults" %>
 <% end %>
-
-
 
 <p></p>
 </div>
