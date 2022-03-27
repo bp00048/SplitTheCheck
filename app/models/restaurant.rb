@@ -1,8 +1,13 @@
 class Restaurant < ApplicationRecord
-  validates :name, :location, presence: true
+  validates :name, presence: true
   validates :website, allow_blank: true, format: {
     with:     %r{\.(com|net|couk|edu)\z}i,
     message: 'Must be a valid website.'
+  }
+  validates :location, presence: true,
+  format: {
+    with: /\A[a-zA-Z\s]+,\s[a-zA-Z]{2}\z/,
+    message: "Location must be City, ST"
   }
   after_initialize :set_defaults, unless: :persisted?
 
