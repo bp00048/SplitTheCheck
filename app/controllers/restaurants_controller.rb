@@ -4,7 +4,6 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants or /restaurants.json
   def index
-
     if !params[:n].nil? && !params[:n].empty?
      @restaurants = Restaurant.where("name LIKE ?", "%" + params[:n] +"%")
     else if !params[:s].nil? && !params[:s].empty?
@@ -27,16 +26,14 @@ end
 
 def yes
  @restaurant = Restaurant.all.find(params[:id])
- @restaurant.yes_split += 1;
- @restaurant.save
+ @restaurant.yes
+
  redirect_to restaurant_path(@restaurant)
 end
 
 def no
  @restaurant = Restaurant.all.find(params[:id])
- @restaurant.no_split += 1;
- @restaurant.save
-
+ @restaurant.no
  redirect_to restaurant_path(@restaurant)
 end
 

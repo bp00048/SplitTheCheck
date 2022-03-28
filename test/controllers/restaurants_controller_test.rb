@@ -10,13 +10,14 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+
   test "should get new" do
     get new_restaurant_url
     assert_response :success
   end
 
   test "should create restaurant" do
-    assert_difference('Restaurant.count') do
+      assert_difference('Restaurant.count') do
       post restaurants_url, params: { restaurant: { location: @restaurant.location, name: @restaurant.name, no_split: @restaurant.no_split, website: @restaurant.website, yes_split: @restaurant.yes_split } }
     end
 
@@ -42,16 +43,18 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Restaurant.count', -1) do
     delete restaurant_url(@restaurant)
     end
-
     assert_redirected_to restaurants_url
   end
 
-  test "should add one yes vote" do
-
-    assert_difference(@restaurant.yes_split.to_s) do
+  test "should remain on page after yes vote" do
     put yes_path(@restaurant)
+    assert_redirected_to restaurant_url(@restaurant)
+    end
+
+    test "should remain on page after no vote" do
+      put no_path(@restaurant)
+      assert_redirected_to restaurant_url(@restaurant)
+      end
 
 
-    end
-    end
     end
