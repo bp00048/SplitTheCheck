@@ -7,45 +7,36 @@ class RestaurantsTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit restaurants_url
-    assert_selector "h1", text: "Restaurants"
+    assert_selector "h1", text: "Search"
   end
 
   test "creating a Restaurant" do
     visit restaurants_url
-    click_on "New Restaurant"
+    click_on "Add Restaurant"
 
-    fill_in "Location", with: @restaurant.location
-    fill_in "Name", with: @restaurant.name
-    fill_in "No split", with: @restaurant.no_split
-    fill_in "Website", with: @restaurant.website
-    fill_in "Yes split", with: @restaurant.yes_split
+    fill_in "location", with: @restaurant.location
+    fill_in "name", with: @restaurant.name
+
+    fill_in "website", with: @restaurant.website
+
     click_on "Create Restaurant"
 
-    assert_text "Restaurant was successfully created"
+    assert_text "Not Enough Votes!"
     click_on "Back"
   end
 
   test "updating a Restaurant" do
-    visit restaurants_url
+    visit restaurant_path(@restaurant)
     click_on "Edit", match: :first
 
-    fill_in "Location", with: @restaurant.location
-    fill_in "Name", with: @restaurant.name
-    fill_in "No split", with: @restaurant.no_split
-    fill_in "Website", with: @restaurant.website
-    fill_in "Yes split", with: @restaurant.yes_split
+    fill_in "location", with: @restaurant.location
+    fill_in "name", with: @restaurant.name
+
+    fill_in "website", with: @restaurant.website
+
     click_on "Update Restaurant"
 
-    assert_text "Restaurant was successfully updated"
+    assert_text @restaurant.name
     click_on "Back"
-  end
-
-  test "destroying a Restaurant" do
-    visit restaurants_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
-
-    assert_text "Restaurant was successfully destroyed"
   end
 end

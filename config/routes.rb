@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   put '/restaurants/:id/no', to: 'restaurants#no', as: 'no'
 
   get 'searchName', to: "restaurants#index"
-  get 'searchState', to: "restaurants#index"
+  get 'searchLocation', to: "restaurants#index"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
