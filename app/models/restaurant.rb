@@ -1,5 +1,5 @@
 class Restaurant < ApplicationRecord
-  after_create :set_defaults, unless: :persisted?
+  after_initialize :set_defaults, unless: :persisted?
   validates :name, presence: true
   validates :website, allow_blank: true, format: {
     with:     %r{\.(com|net|couk|edu)\z}i,
