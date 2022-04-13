@@ -21,7 +21,9 @@
   <%= link_to "Restaurant Website", @restaurant.website, :target=> '_blank' %>
   <% end %>
   <br>
+  <% if user_signed_in? then %>
   <%= link_to "Edit", edit_restaurant_path(@restaurant) %>
+  <% end %>
   </div>
   </div>
   </div>
@@ -52,7 +54,7 @@ Yes Votes: <%= @restaurant.yes_split %>
 No Votes: <%= @restaurant.no_split %>
 </div>
 </div>
-
+  <% if user_signed_in? then %>
 <div class="row justify-content-center">
   <div class="col-5">
 <div class="showVoteButtons">
@@ -62,7 +64,15 @@ No Votes: <%= @restaurant.no_split %>
   <br>
   <%= link_to 'Yes', yes_path(@restaurant), class: "btn btn-primary", method: :put %>
     <%= link_to 'No', no_path(@restaurant), class: "btn btn-danger", method: :put %>
-
+<% else %>
+<div class="row justify-content-center">
+  <div class="col-5">
+    <div class="showVoteButtons">
+Please <%= link_to 'log in', new_user_session_path %> or <%= link_to 'sign up', new_user_registration_path %> to cast your vote!
+</div>
+</div>
+</div>
+<% end %>
 
     </div>
     </div>

@@ -2,6 +2,14 @@
 
 <div class="row justify-content-center">
 <div class="col-7 align-self-center">
+
+<% if user_signed_in? then %>
+Hello, <%= current_user.email %>
+<% else %>
+<div class="login">
+<%= link_to 'Login', new_user_session_path %><br><%= link_to 'Register', new_user_registration_path %>
+</div>
+<% end %>
 <div class="header">
 <h1>Split the Check!</h1>
 </div>
