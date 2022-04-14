@@ -32,14 +32,15 @@
 
       <div class="col-6">
   <div class="showPercent">
-    <% if (@restaurant.yes_split == 0 && @restaurant.no_split == 0) %>
+    <% if (@restaurant.votes.all.count == 0) %>
       Not Enough Votes!
-      <% elsif (@restaurant.yes_split > 0 && @restaurant.no_split == 0) %>
+      <% elsif (@restaurant.votes.where(vote_type:"Yes").count > 0 && @restaurant.votes.where(vote_type:"No").count == 0) %>
       100% Yes
-      <% elsif (@restaurant.yes_split == 0 && @restaurant_no_split > 0) %>
+      <% elsif (@restaurant.votes.where(vote_type:"Yes").count == 0 && @restaurant.votes.where(vote_type:"No").count > 0) %>
       0% Yes
       <% else %>
-  <%= @restaurant.votes.all.count %> % Yes
+        <%= ((@restaurant.votes.where(vote_type:"Yes").count.to_f / @restaurant.votes.all.count) * 100).to_i %> % Yes
+
 <% end %>
 
 </div>
@@ -48,9 +49,12 @@
 
   <div class="row justify-content-center">
 <div class="showVoteAmount">
-Yes Votes: <%= @restaurant.yes_split %>
 
-No Votes: <%= @restaurant.no_split %>
+Yes Votes: <%= @restaurant.votes.where(vote_type:"Yes").count %>
+
+No Votes: <%= @restaurant.votes.where(vote_type:"No").count %>
+
+All Votes <%= @restaurant.votes.count %>
 </div>
 </div>
   <% if user_signed_in? then %>
@@ -64,10 +68,15 @@ No Votes: <%= @restaurant.no_split %>
   <form action="/votes" method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="hidden" name="vote[restaurant_id]" value="<%= @restaurant.id %>">
-    <input type="submit" value="Yes">
+        <input type="hidden" name="vote[vote_type]" value="Yes">
+    <input type="submit" value="Yes" class="btn btn-primary">
     </form>
-
-    <%= link_to 'No', no_path(@restaurant), class: "btn btn-danger", method: :put %>
+    <form action="/votes" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="vote[restaurant_id]" value="<%= @restaurant.id %>">
+        <input type="hidden" name="vote[vote_type]" value="No">
+      <input type="submit" value="No" class="btn btn-danger">
+      </form>
 <% else %>
 <div class="row justify-content-center">
   <div class="col-5">
