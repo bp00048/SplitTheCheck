@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :restaurants
   resources :restaurant
-
+  resources :votes, only:[:create, :destroy]
   root 'restaurants#index'
 
   put '/restaurants/:id/yes', to: 'restaurants#yes', as: 'yes'

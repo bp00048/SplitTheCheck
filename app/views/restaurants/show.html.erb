@@ -1,6 +1,5 @@
 <div class="container">
 
-    <%= render "header" %>
 <div class="showRestaurantInfo">
     <div class="col align-self-center">
     <div class="row justify-content-center">
@@ -40,7 +39,7 @@
       <% elsif (@restaurant.yes_split == 0 && @restaurant_no_split > 0) %>
       0% Yes
       <% else %>
-  <%= (@restaurant.yes_split/(@restaurant.yes_split.to_f + @restaurant.no_split) * 100).to_i %> % Yes
+  <%= @restaurant.votes.all.count %> % Yes
 <% end %>
 
 </div>
@@ -62,7 +61,12 @@ No Votes: <%= @restaurant.no_split %>
 <div class="row justify-content-center">
 <div class="col align-self-center">
   <br>
-  <%= link_to 'Yes', yes_path(@restaurant), class: "btn btn-primary", method: :put %>
+  <form action="/votes" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="vote[restaurant_id]" value="<%= @restaurant.id %>">
+    <input type="submit" value="Yes">
+    </form>
+
     <%= link_to 'No', no_path(@restaurant), class: "btn btn-danger", method: :put %>
 <% else %>
 <div class="row justify-content-center">

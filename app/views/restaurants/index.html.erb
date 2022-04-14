@@ -1,6 +1,6 @@
 
 <div class="container">
-  <%= render "header" %>
+
   <div class="row justify-content-center">
     <h1>Search</h1>
     <div class="searchBoxes">
@@ -24,7 +24,9 @@
     </form>
     </div>
     </div>
+    <% if user_signed_in? then %>
   <%= link_to 'Add Restaurant', new_restaurant_path %>
+  <% end %>
     </div>
 
   <br>
