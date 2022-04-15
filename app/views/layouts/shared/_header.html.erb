@@ -2,16 +2,23 @@
 
 <div class="row justify-content-center">
 <div class="col-7 align-self-center">
-
-<% if user_signed_in? then %>
-Hello, <%= current_user.email %>
-<% else %>
 <div class="login-links">
+<% if user_signed_in? then %>
+Hello, <%= current_user.email %><br>
+<%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+<% else %>
+
 <%= link_to 'Login', new_user_session_path %><br><%= link_to 'Register', new_user_registration_path %>
 </div>
 <% end %>
 <div class="header">
 <h1>Split the Check!</h1>
 </div>
+<% if notice then %>
+<p class="alert alert-success"><%= notice %></p>
+<% end  %>
+<% if alert then %>
+<p class="alert alert-danger"><%= alert %></p>
+<% end %>
 </div>
 </div>
