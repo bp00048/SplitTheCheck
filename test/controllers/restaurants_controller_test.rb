@@ -3,6 +3,7 @@ require "test_helper"
 class RestaurantsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @restaurant = restaurants(:one)
+
   end
 
   test "should get index" do
@@ -23,6 +24,19 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to restaurant_url(Restaurant.last)
   end
+
+  test "should search a restaurant by name" do
+    assert(2, Restaurant.all.count)
+    get searchName_path, params: { n: "Test" }
+    assert(1, Restaurant.all.count)
+  end
+
+  test "should search a restaurant by location" do
+    assert(2, Restaurant.all.count)
+    get searchName_path, params: { s: "Second City" }
+    assert(1, Restaurant.all.count)
+  end
+
 
   test "should show restaurant" do
     get restaurant_url(@restaurant)

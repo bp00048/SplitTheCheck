@@ -1,7 +1,7 @@
 require "test_helper"
 
 class VotesControllerTest < ActionDispatch::IntegrationTest
-  include Devise::Test::IntegrationHelpers # Rails >= 5
+  include Devise::Test::IntegrationHelpers
 
 
   setup do

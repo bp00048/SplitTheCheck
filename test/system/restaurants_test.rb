@@ -1,8 +1,10 @@
 require "application_system_test_case"
 
 class RestaurantsTest < ApplicationSystemTestCase
+include Devise::Test::IntegrationHelpers
   setup do
     @restaurant = restaurants(:one)
+    @user = users(:one)
   end
 
   test "visiting the index" do
@@ -11,6 +13,7 @@ class RestaurantsTest < ApplicationSystemTestCase
   end
 
   test "creating a Restaurant" do
+    sign_in @user
     visit restaurants_url
     click_on "Add Restaurant"
 
@@ -26,6 +29,7 @@ class RestaurantsTest < ApplicationSystemTestCase
   end
 
   test "updating a Restaurant" do
+    sign_in @user
     visit restaurant_path(@restaurant)
     click_on "Edit", match: :first
 

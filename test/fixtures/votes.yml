@@ -3,9 +3,9 @@
 one:
   user: 1
   restaurant: 1
-  vote_type: Yes
+  vote_type: "Yes"
 
 two:
   user: 2
   restaurant: 2
-  vote_type: No
+  vote_type: "No"
