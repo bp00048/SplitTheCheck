@@ -7,6 +7,25 @@ include Devise::Test::IntegrationHelpers
     @user = users(:one)
   end
 
+  test "should search a restaurant by name" do
+    visit restaurants_url
+    fill_in "name", with: "Test"
+
+    click_on "searchname"
+    assert_text "Test"
+    assert_text "City, ST"
+  end
+
+  test "should search a restaurant by location" do
+    visit restaurants_url
+    fill_in "location", with: "City"
+
+    click_on "searchlocation"
+    assert_text "Test"
+    assert_text "City, ST"
+
+  end
+
   test "visiting the index" do
     visit restaurants_url
     assert_selector "h1", text: "Search"
