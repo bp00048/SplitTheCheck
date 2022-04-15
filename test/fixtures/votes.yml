@@ -1,9 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user: one
-  restaurant: one
+  user: 1
+  restaurant: 1
+  vote_type: Yes
 
 two:
-  user: two
-  restaurant: two
+  user: 2
+  restaurant: 2
+  vote_type: No
