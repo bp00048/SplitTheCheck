@@ -9,7 +9,6 @@ class VotesControllerTest < ActionDispatch::IntegrationTest
     @user = users(:one)
   end
 
-
   test "should create yes vote" do
     #Last test Vote object is of type "No"
       assert(Vote.last.vote_type, "No")
