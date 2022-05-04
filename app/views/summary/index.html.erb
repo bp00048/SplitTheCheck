@@ -1,0 +1,54 @@
+
+<div class="container">
+  <h1>User Summary</h1>
+Votes:
+  <table>
+    <thead>
+      <tr>
+        <th>Restaurant</th>
+        <th>Vote</th>
+
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+  <% @user.votes.each do |vote| %>
+     <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+      <td><%= vote.restaurant.name %></td>
+      <td><%= vote.vote_type %></td>
+      <td><%= link_to 'Show', vote.restaurant %></td>
+    </tr>
+  <% end %>
+
+  </table>
+<br>
+  Favorites:
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+    <% @user.favorites.each do |favorite| %>
+       <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+        <td><%= favorite.restaurant.name %></td>
+        <td><%= link_to 'Show', favorite.restaurant %></td>
+      </tr>
+    <% end %>
+
+    </table>
+
+    <br>
+    <br>
+      Comments:<br>
+      <% @user.comments.each do |comment| %>
+      <%= comment.content %>
+      <small><%= comment.restaurant.name %></small> at <%= comment.created_at %>
+      <br>
+      <hr /r>
+      <% end %>
+
+  </div>

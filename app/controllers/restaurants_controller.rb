@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: %i[ show edit update destroy ]
+  
 
   # GET /restaurants or /restaurants.json
   def index
@@ -15,6 +16,7 @@ end
   # GET /restaurants/1 or /restaurants/1.json
   def show
     @restaurant = Restaurant.all.find(params[:id])
+    @favorite_exists = Favorite.where(restaurant: @restaurant, user: current_user) == [] ? false : true
 
   end
 

@@ -4,7 +4,8 @@
 <div class="col-7 align-self-center">
 <div class="login-links">
 <% if user_signed_in? then %>
-Hello, <%= current_user.email %><br>
+Hello, <%=  current_user.email %><br>
+<%= link_to 'User Summary', user_summary_path %><br>
 <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
 <% else %>
 

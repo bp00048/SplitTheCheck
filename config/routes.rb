@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  get 'user/summary' => 'summary#index'
+  get 'favorites/update'
   devise_for :users
   resources :restaurants do
     resources :comments, only: [:create]
   end
+  resources :users
   resources :restaurant
   resources :votes, only:[:create, :destroy]
   root 'restaurants#index'
