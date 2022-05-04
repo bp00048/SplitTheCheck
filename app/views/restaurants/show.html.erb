@@ -89,10 +89,11 @@ Please <%= link_to 'log in', new_user_session_path %> or <%= link_to 'sign up', 
     </div>
     </div>
     </div>
-
+<br><br>
     <p>
     <strong>Comments: </strong>
     <%= render @restaurant.comments %>
+    <%= render partial: 'comments/form', locals: { restaurant: @restaurant } %>
     </p>
 
 
