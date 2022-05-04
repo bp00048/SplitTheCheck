@@ -1,5 +1,6 @@
 class Restaurant < ApplicationRecord
   has_many :votes
+  has_many :comments
   after_initialize :set_defaults, unless: :persisted?
   validates :name, presence: true
   validates :website, allow_blank: true, format: {

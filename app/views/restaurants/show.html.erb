@@ -86,12 +86,14 @@ Please <%= link_to 'log in', new_user_session_path %> or <%= link_to 'sign up', 
 </div>
 </div>
 <% end %>
-
     </div>
     </div>
     </div>
 
-
+    <p>
+    <strong>Comments: </strong>
+    <%= render @restaurant.comments %>
+    </p>
 
 
 </div>
