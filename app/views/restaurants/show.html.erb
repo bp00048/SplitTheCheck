@@ -84,17 +84,28 @@ All Votes <%= @restaurant.votes.count %>
 Please <%= link_to 'log in', new_user_session_path %> or <%= link_to 'sign up', new_user_registration_path %> to cast your vote!
 </div>
 </div>
-</div>
+
 <% end %>
-    </div>
-    </div>
-    </div>
+</div>
+</div>
+  </div>
 <br><br>
     <p>
+<div class="comments">
     <strong>Comments: </strong>
     <%= render @restaurant.comments %>
+    <br>
+      <% if user_signed_in? then %>
     <%= render partial: 'comments/form', locals: { restaurant: @restaurant } %>
+    <% else %>
+    <%= link_to 'Log in', new_user_session_path %> or <%= link_to 'Sign up', new_user_registration_path %> to leave a comment!
+    <% end %>
     </p>
+</div>
+
+
+    </div>
+
 
 
 </div>
