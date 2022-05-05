@@ -1,0 +1,10 @@
+
+<% @user.comments.each do |comment| %>
+
+<%= comment.content %>
+<small><%= link_to comment.restaurant.name, comment.restaurant %> at <%= comment.created_at %></small>
+
+<br>
+<hr /r>
+<% end %>
+<br>

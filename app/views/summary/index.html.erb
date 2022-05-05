@@ -1,54 +1,43 @@
 
-<div class="container">
+<div class="container"><div class="showHistory">
   <h1>User Summary</h1>
-Votes:
-  <table>
-    <thead>
-      <tr>
-        <th>Restaurant</th>
-        <th>Vote</th>
+  <div class="col-md">
+<div class="row">
 
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-  <% @user.votes.each do |vote| %>
-     <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-      <td><%= vote.restaurant.name %></td>
-      <td><%= vote.vote_type %></td>
-      <td><%= link_to 'Show', vote.restaurant %></td>
-    </tr>
-  <% end %>
-
-  </table>
+<h2>Votes:</h2>
+<% if @user.votes.count > 0 then %>
+<%= render partial: 'summary/votes' %>
+<% else %>
 <br>
-  Favorites:
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
+You have no votes.
+<% end %>
+</div>
+<br><br><br>
+<div class="row">
 
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-
-    <% @user.favorites.each do |favorite| %>
-       <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-        <td><%= favorite.restaurant.name %></td>
-        <td><%= link_to 'Show', favorite.restaurant %></td>
-      </tr>
-    <% end %>
-
-    </table>
+  <h2>Favorites:</h2>
+<% if @user.favorites.count > 0 then %>
+<%= render partial: 'summary/favorites' %>
+<% else %>
+<br>
+You have no favorites.
+<% end %>
+</div>
+<br><br><br>
+<div class="row">
 
     <br>
     <br>
-      Comments:<br>
-      <% @user.comments.each do |comment| %>
-      <%= comment.content %>
-      <small><%= comment.restaurant.name %></small> at <%= comment.created_at %>
-      <br>
-      <hr /r>
-      <% end %>
-
-  </div>
+<h2>Comments:</h2>
+<% if @user.comments.count > 0 then %>
+<%= render partial: 'summary/comments' %>
+<% else %>
+<br>
+You have made no comments.
+<% end %>
+</div>
+</div>
+<br><br>
+<%= link_to 'Home', restaurants_path %>
+</div>
+</div>

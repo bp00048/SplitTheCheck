@@ -1,0 +1,6 @@
+
+<% @user.favorites.each do |favorite| %>
+<%= link_to favorite.restaurant.name, favorite.restaurant %>
+<br>
+
+<% end %>
