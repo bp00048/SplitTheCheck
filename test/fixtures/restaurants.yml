@@ -1,15 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: Test
-  location: City, ST
-  website: restaurant.com
+  name: "Test"
+  location: "City, ST"
+  website: "restaurant.com"
   yes_split: 1
   no_split: 1
 
 two:
-  name: Second Restaurant Name
-  location: Second City, ST
-  website: restauranttwo.com
+  name: "Second Restaurant Name"
+  location: "Second City, ST"
+  website: "restauranttwo.com"
   yes_split: 1
   no_split: 1

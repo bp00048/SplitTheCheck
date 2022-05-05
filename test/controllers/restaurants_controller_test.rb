@@ -1,9 +1,11 @@
 require "test_helper"
 
 class RestaurantsControllerTest < ActionDispatch::IntegrationTest
+    include Devise::Test::IntegrationHelpers
+
   setup do
     @restaurant = restaurants(:one)
-
+    @user = users(:one)
   end
 
   test "should get index" do
@@ -13,6 +15,7 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
 
 
   test "should get new" do
+    sign_in @user
     get new_restaurant_url
     assert_response :success
   end
@@ -27,26 +30,23 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
 
 
   test "should show restaurant" do
+    sign_in @user
     get restaurant_url(@restaurant)
     assert_response :success
   end
 
   test "should get edit" do
+    sign_in @user
     get edit_restaurant_url(@restaurant)
     assert_response :success
   end
 
   test "should update restaurant" do
+    sign_in @user
     patch restaurant_url(@restaurant), params: { restaurant: { location: @restaurant.location, name: @restaurant.name, no_split: @restaurant.no_split, website: @restaurant.website, yes_split: @restaurant.yes_split } }
     assert_redirected_to restaurant_url(@restaurant)
   end
 
-  test "should destroy restaurant" do
-    assert_difference('Restaurant.count', -1) do
-    delete restaurant_url(@restaurant)
-    end
-    assert_redirected_to restaurants_url
-  end
 
   test "should remain on page after yes vote" do
     put yes_path(@restaurant)
